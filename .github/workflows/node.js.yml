@@ -17,15 +17,16 @@ jobs:
       # Delete separate tokens
       #- run: rm -r \tokens
       # Transform Figma Tokens JSON to something Style Dictionary can read
-      - run: npx token-transformer tokens.json tokens/global.json global
-      # Create a light theme, exclude the global tokens
-      - run: npx token-transformer tokens.json tokens/light.json global,light,theme,portal global,portal
-      # Create a dark theme, exclude the global tokens
-      - run: npx token-transformer tokens.json tokens/dark.json global,dark,theme global
-      # Create a portal theme, exclude the global tokens
-      - run: npx token-transformer tokens.json tokens/portal.json global,portal,theme global
-      # Create a typography theme, exclude the global tokens
-      - run: npx token-transformer tokens.json tokens/typography.json global,typography,theme global
+      - run: npx token-transformer tokens.json tokens/colors.json base/colors
+      - run: npx token-transformer tokens.json tokens/radii.json base/radii
+      - run: npx token-transformer tokens.json tokens/shadows.json base/shadows
+      - run: npx token-transformer tokens.json tokens/dimension.json base/dimension
+      - run: npx token-transformer tokens.json tokens/typography.json base/typography
+      - run: npx token-transformer tokens.json tokens/high-contrast.json "themes/high contrast",base/colors base/colors
+      - run: npx token-transformer tokens.json tokens/dark.json themes/dark,base/colors base/colors
+      - run: npx token-transformer tokens.json tokens/light.json themes/light,base/colors base/colors
+      - run: npx token-transformer tokens.json tokens/theme.json semantic/theme,themes/light,base/shadows,base/colors themes/light,base/shadows,base/colors
+      - run: npx token-transformer tokens.json tokens/semantic-typography.json semantic/typography,base/typography base/typography
       # Convert tokens according to Style Dictionary configs
       - run: node build.js
       # Add files that were created during a run, e.g. created files from style dictionary or token-transformer.

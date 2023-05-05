@@ -97,7 +97,7 @@ function getStyleDictionaryConfig(theme) {
         "files": [{
             "destination": `${theme}.scss`,
             "format": "scss/variables",
-            "selector": `.${theme}-theme`,
+            "selector": `.${theme}`,
             "options": {
               // Look here 👇
               "outputReferences": true
@@ -110,7 +110,7 @@ function getStyleDictionaryConfig(theme) {
         "files": [{
             "destination": `${theme}.css`,
             "format": "css/variables",
-            "selector": `.${theme}-theme`
+            "selector": `.${theme}`
           }]
       }
     }
@@ -121,7 +121,7 @@ console.log('Build started...');
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFEREN BRANDS AND PLATFORMS
 
-['global', 'dark', 'light', 'portal', 'typography'].map(function (theme) {
+['colors','radii','shadows','dimension','typography','high-contrast','dark','light','theme','semantic-typography'].map(function (theme) {
 
     console.log('\n==============================================');
     console.log(`\nProcessing: [${theme}]`);
